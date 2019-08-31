@@ -1,0 +1,54 @@
+<html>
+
+<head>
+  <title>mows</title>
+</head>
+
+<header>
+  <center>
+    <h1>MQTT</h1>
+  </center>
+</header>
+<style>    
+    table, th, td {
+      text-align: center;
+      border: 1px black solid;
+    }
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+    
+    th {
+      height: 10px;
+    }
+    </style>
+
+<body>
+  <h1>PUBLISHER</h1>
+  <h3>Topic: </h3>
+  <input type="text" id="subscribe"><br>
+  <h3>Payload: </h3>
+  <input type="text" id="publish"><br>
+  <center><button id="connect-button">Connect</button></center>
+  <button  onclick="enableButton()" id="enableBtn">Enable to Connect</button>
+  <button id="publish-button">Publish</button><br><br><br>
+
+  <table id="addValue">
+    <h1>BROKER</h1><br>
+    <tr>
+    <th>
+      <h2>Topic</h2>
+    </th>
+    <th>
+      <h2>Payload</h2>
+    </th> 
+  </tr>
+    
+    </div>
+  </table>
+</body>
+<script src="scripts/browserMqtt.js"></script>
+<script src="scripts/controller.js"></script>
+
+</html>
