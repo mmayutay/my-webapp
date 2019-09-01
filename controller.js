@@ -23,8 +23,12 @@ function disableButton(){
 
 //function in enabling button
 function enableButton(){
+  if (toPublish() == null) {
+    alert('asdf');
+  } else {
     buttonConnect.disabled = false;
-    document.getElementById('enableBtn').disabled = true;
+    document.getElementById('enableBtn').disabled = true; 
+  }
 }
 //function for the publish button
 function enablePub(){
