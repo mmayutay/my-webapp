@@ -2,54 +2,171 @@
 
 <head>
   <title>mows</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </head>
 
-<header>
-  <center>
-    <h1>MQTT</h1>
-  </center>
+<header id="connected">
+  <CENter>
+    <h1 style="font-size: 100px; font-family: Arial">MQTT</h1><br>
+    <h2 id="SuccConne"></h2>
+  </CENter>
 </header>
-<style>    
-    table, th, td {
-      text-align: center;
+<style>
+  /* table, th, td {
       border: 1px black solid;
     }
     table {
-      float: right;
       border-collapse: collapse;
       width: 50%;
-    }
+    }/* } */
+    .table, .table-bordered, .table-hover {
+      border: black 1px solid!important;
+      
+    } */
     
     th {
       height: 10px;
     }
+    #subscribe {
+      float: right;
+    }
+    .card {
+      margin-top: 50px;
+      box-shadow:-1px 2px 8px 4px #EAECEE}
+    .btn {
+      padding: 8px 18px;
+      font-size: 24px;
+      text-align: center;
+      cursor: pointer;
+      outline: none;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+    }
+
+.btn:hover {
+      background-color: #3e8e41
+    }
+
+.btn:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    header {
+      background-color: #AED6F1;
+      height: 260px;
+      background-attachment: fixed;
+    }
+
+
     </style>
 
 <body>
-  <h1>This for the publisher</h1>
-  <input type="text" id="subscribe"><br>
-  <input type="text" id="publish"><br>
-  <button id="connect-button">Connect</button>
-  <button id="publish-button">Publish</button><br><br><br>
 
-  <table>
-    <h1 style="text-align: right;">Broker Side</h1><br>
-    <tr>
-    <th>
-      <h2>Topic</h2>
-    </th>
-    <th>
-      <h2>Payload</h2>
-    </th> 
-    
-  </tr>
-  <tr>
-    <td><p id="displayMessage"></p></td>
-    <td><p id="messages"></p></td>
-  </tr>
-    
+  <div class="container">
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-body text-center">
+          <table class="table table-hover">
+            <td colspan="2" class="table-info">
+              <center>
+                <h1>PUBLISHER</h1>
+              </center>
+            </td>
+            <tr>
+              <th>
+                <h3>Topic: </h3>
+                <input type="text" id="subscribe" class="form-control"><br>
+              </th>
+              <th>
+                <h3>Payload: </h3>
+                <input type="text" id="publish" class="form-control"><br><br>
+            </tr>
+            </th>
+            <td colspan="2">
+              <br>
+              <center>
+                <button class="btn btn-outline-success" id="publish-button">Publish</button>
+              </center>
+              <br>
+            </td>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body text-center">
+          <table class="table table-hover">
+            <td colspan="2" class="table-info">
+              <center>
+                <h1>SUBSCRIBER</h1>
+              </center>
+            </td>
+            <tr>
+              <th>
+                <h3>Topic: </h3>
+                <input type="text" class="form-control" id="subscribeTo"><br>
+              </th>
+              <td colspan="2">
+                <br>
+                <center>
+                  <button class="btn btn-outline-success" id="subscribe-button">Subscribe</button>
+                </center>
+                <br>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
-  </table>
+  </div>
+
+
+
+  <br>
+  <div class="container">
+    <div class="card">
+      <div class="card-body text-center">
+        <table class="table table-hover" id="addValue">
+          <td colspan="3" class="table-info">
+            <center>
+              <h1>BROKER</h1>
+              <button class="btn btn-outline-success" id="disconnect">Disconnect</button>
+              <button class="btn btn-outline-success" id="connect-button">Connect</button>
+              <button class="btn btn-outline-success" onclick="enableButton()" id="enableBtn">Enable to Connect</button>
+            </center><br>
+          </td>
+          <tr>
+            <th colspan="3"  id="broker">
+                <h3>BROKER</h3>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <h2>Topic</h2>
+            </th>
+            <th>
+              <h2>Payload</h2>
+            </th>
+            <th>
+              <h2>Time Displayed</h2>
+            </th>
+          </tr>
+
+      </div>
+      </table>
+    </div>
+  </div>
+  </div>
+
 </body>
 <script src="scripts/browserMqtt.js"></script>
 <script src="scripts/controller.js"></script>
